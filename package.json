@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "highrise.sdk": "^1.1.7",
+    "highrise.sdk.dev": "^2.4.0"
+  }
+}
