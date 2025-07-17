@@ -77,7 +77,7 @@ bot.on("chatCreate", async (user, message) => {
                 requiredAmount = totalPlayers * 6;
                 break;
             case 10:
-                barType = GoldBars.BAR_10;  // Обратите внимание: здесь тоже BAR_5?
+                barType = GoldBars.BAR_10;
                 requiredAmount = totalPlayers * 11;
                 break;
             default:
