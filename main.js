@@ -244,21 +244,13 @@ const bot = new Highrise({
   setInterval(() => {
     bot.message.send("ЛЮДИ НЕ ПОПРОШАЙНИЧАТЬ БУДЬТЕ ТЕРПИЛИВЫМИ ЕСЛИ ВЫ НЕ ТЕРПЕЛИВЫ ТО БУДЕТЕ КИКНУТЫ С РУМЫ ЗАДАВАТЬ ГЛУПЫЕ ВОПРОСЫ ПО ТИПУ А ТУТ ЧЕ РАЗДАЧА - КИК ЧИТАЙТЕ НАЗВАНИЕ РУМЫ ЛС СОЗДАТЕЛЬНИЦЫ МУСОРОМ НЕ ЗАСОРЯТЬ РЕКЛАМА СВОИХ РУМ ЗАПРЕЩЕНА").catch(console.error);
   }, 120000)
-  setInterval(async () => {
+setInterval(async () => {
   for (const [userID, emoteData] of userEmote) {
-    if (emoteData.mu) continue
-    emoteData.mu = true
-    const id = emoteData.id
     const duration = emotes[emoteData.id].duration
-    const durationMs = duration * 1000; // переводим в мс
-    const nextTime = Math.floor(Date.now() / durationMs) * durationMs + durationMs;
-    if (emoteData.sync) {
-      await new Promise(resolve => setTimeout(resolve, nextTime - Date.now()));
-      if (id !== userEmote.get(userID).id || !emoteData.sync) continue
+    if ((Date.now() - emoteData.time) / 1000 >= emotes[emoteData.id].duration && !emoteData.sync) {
       userEmote.set(userID, {id: emoteData.id, time: Date.now()})
       await bot.player.emote(userID, emotes[emoteData.id].id)
       .catch(e => userEmote.delete(userID))
-      emoteData.mu = false
     }
   }
 }, 0);
