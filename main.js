@@ -253,7 +253,7 @@ setInterval(async () => {
       .catch(e => userEmote.delete(userID))
     }
   }
-}, 10);
+}, 0);
 
 bot.on("ready", () => {
   bot.move.walk(18.5, 2, 1.5, Facing.FrontLeft)
@@ -266,6 +266,10 @@ bot.on("playerTip", async (sender, receiver, tip) => {
 bot.on("chatCreate", async (user, message) => {
   const msg = message.toLowerCase();
   console.log(`${user.username}: ${msg}`)
+    if (msg === '0') {
+    userEmote.delete(user.id)
+    return
+  }
    if (/^\s*\d+\s*$/.test(msg)) {
   const index = parseInt(msg) - 1;
   if (!isNaN(index) && index >= 0 && index < emotes.length) {
@@ -275,10 +279,6 @@ bot.on("chatCreate", async (user, message) => {
   }
   return
 }
-  if (msg == "0") {
-    userEmote.delete(user.id)
-    return
-  }
   if (user.id != "67a2b617a337e1b57da53360" && user.id != '6370bcc817c7908be2648aef') return
   console.log(`[CHAT]: ${user.username}:${user.id} - ${message}`);
   console.log(await bot.room.players.get())
