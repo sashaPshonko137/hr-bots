@@ -241,9 +241,9 @@ const bot = new Highrise({
   Cache: true
 });
 
-  setInterval(() => {
-    bot.message.send("ЛЮДИ НЕ ПОПРОШАЙНИЧАТЬ БУДЬТЕ ТЕРПИЛИВЫМИ ЕСЛИ ВЫ НЕ ТЕРПЕЛИВЫ ТО БУДЕТЕ КИКНУТЫ С РУМЫ ЗАДАВАТЬ ГЛУПЫЕ ВОПРОСЫ ПО ТИПУ А ТУТ ЧЕ РАЗДАЧА - КИК ЧИТАЙТЕ НАЗВАНИЕ РУМЫ ЛС СОЗДАТЕЛЬНИЦЫ МУСОРОМ НЕ ЗАСОРЯТЬ РЕКЛАМА СВОИХ РУМ ЗАПРЕЩЕНА").catch(console.error);
-  }, 120000)
+setInterval(() => {
+  bot.message.send("ЛЮДИ НЕ ПОПРОШАЙНИЧАТЬ БУДЬТЕ ТЕРПИЛИВЫМИ ЕСЛИ ВЫ НЕ ТЕРПЕЛИВЫ ТО БУДЕТЕ КИКНУТЫ С РУМЫ ЗАДАВАТЬ ГЛУПЫЕ ВОПРОСЫ ПО ТИПУ А ТУТ ЧЕ РАЗДАЧА - КИК ЧИТАЙТЕ НАЗВАНИЕ РУМЫ ЛС СОЗДАТЕЛЬНИЦЫ МУСОРОМ НЕ ЗАСОРЯТЬ РЕКЛАМА СВОИХ РУМ ЗАПРЕЩЕНА").catch(console.error);
+}, 120000)
 setInterval(async () => {
   for (const [userID, emoteData] of userEmote) {
     const duration = emotes[emoteData.id].duration
@@ -253,7 +253,7 @@ setInterval(async () => {
       .catch(e => userEmote.delete(userID))
     }
   }
-}, 0);
+}, 10);
 
 bot.on("ready", () => {
   bot.move.walk(18.5, 2, 1.5, Facing.FrontLeft)
