@@ -283,6 +283,10 @@ bot.on("chatCreate", async (user, message) => {
   }
   return
 }
+  if (msg === "0") {
+    userEmote.delete(user.id)
+    return
+  }
 
   // if (msg === 'ой') {
   //    bot.player.teleport('6878e7decf32433a6c6f14ef', 1, 40, 0, Facing.FrontLeft).catch(e => console.error(e));
