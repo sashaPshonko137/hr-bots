@@ -154,7 +154,7 @@ const emotes = [
   { name: "Snake", id: "emote-snake", duration: 5.262578, is_free: true },
   { name: "Heart Fingers", id: "emote-heartfingers", duration: 4.001974, is_free: true },
   { name: "Heart Shape", id: "emote-heartshape", duration: 6.232394, is_free: false },
-  { name: "Hug", id: "emote-hug", duration: 2, is_free: false },
+  { name: "Hug", id: "emote-hug", duration: 2.5, is_free: false },
   { name: "Eyeroll", id: "emoji-eyeroll", duration: 3.020264, is_free: false },
   { name: "Embarrassed", id: "emote-embarrassed", duration: 7.414283, is_free: false },
   { name: "Float", id: "emote-float", duration: 8.995302, is_free: true },
@@ -285,7 +285,7 @@ const emoteWords = [
     ],
     id: "emote-hug",
     index: findEmoteIndexById("emote-hug"),
-    duration: 2
+    duration: 2.5
   },
 ]
 
@@ -350,7 +350,6 @@ bot.on("chatCreate", async (user, message) => {
 }
   if (user.id != "67a2b617a337e1b57da53360" && user.id != '6370bcc817c7908be2648aef') return
   console.log(`[CHAT]: ${user.username}:${user.id} - ${message}`);
-  console.log(await bot.room.players.get())
   if (msg === 'баланс' || msg === 'бал') {
     const balance = await bot.wallet.gold.get().catch(console.error)
     bot.message.send(`баланс - ${balance}`).catch(console.error);
