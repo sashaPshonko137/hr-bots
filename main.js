@@ -324,7 +324,6 @@ bot.on("chatCreate", async (user, message) => {
     userEmote.delete(user.id)
     return
   }
-   const hasExclamation = msg.endsWith('!');
 
   // Удаляем восклицательный знак (если он есть) для поиска
   const foundEmote = emoteWords.find(emote =>
