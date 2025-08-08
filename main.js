@@ -313,12 +313,32 @@ bot.on("ready", () => {
   bot.move.walk(18.5, 2, 1.5, Facing.FrontLeft)
 })
 
+bot.on('playerJoin', async (user, position) => {
+  const players = await bot.room.players.get().catch(console.error)
+  const player = players.find(pl => pl[0].id === user.id)
+  userCord.set(player[0].id, player[1])
+});
+
 bot.on("playerTip", async (sender, receiver, tip) => {
   const balance = await bot.wallet.gold.get().catch(console.error)
 })
 
 bot.on("chatCreate", async (user, message) => {
   const msg = message.toLowerCase();
+  if (msg === 'трусы') {
+    const outfit = [
+      {
+        type: 'clothing',
+        amount: 1,
+        id: 'body-flesh', // Important
+        account_bound: false,
+        active_palette: 18
+      },
+    ];
+
+    bot.outfit.change(outfit).catch(e => console.error(e));
+    return
+  }
   console.log(`${user.username}: ${msg}`)
     if (msg === '0') {
     userEmote.delete(user.id)
@@ -363,7 +383,7 @@ bot.on("chatCreate", async (user, message) => {
   const price = extractNumberFromString(msg)
   if (price !== 0) {
     try {
-        const balance = await bot.wallet.gold.get();
+        const balance = await bot.wallet.gold.get().catch(console.error);
         console.log('Current balance:', balance);
         
         if (!balance) {
@@ -371,7 +391,7 @@ bot.on("chatCreate", async (user, message) => {
             return;
         }
 
-        const players = await bot.room.players.get();
+        const players = await bot.room.players.get().catch(console.error);
         if (!players || !players.length) {
             console.error('No players found');
             return;
@@ -402,7 +422,7 @@ bot.on("chatCreate", async (user, message) => {
         }
 
         if (balance < requiredAmount) {
-            await bot.message.send(`Не хватает золота! Баланс: ${balance}, требуется: ${requiredAmount}`);
+            await bot.message.send(`Не хватает золота! Баланс: ${balance}, требуется: ${requiredAmount}`).catch(console.error);
             return;
         }
 
@@ -424,7 +444,7 @@ for (const id of playerIDs) {
 
 // Отправляем итоговое сообщение
 try {
-  await bot.message.send(`✅ Успешно отправлены чаевые всем ${successCount} игрокам!`);
+  await bot.message.send(`✅ Успешно отправлены чаевые всем ${successCount} игрокам!`).catch(console.error);
     
 } catch (error) {
     console.error('Failed to send result message:', error);
