@@ -154,7 +154,7 @@ const emotes = [
   { name: "Snake", id: "emote-snake", duration: 5.262578, is_free: true },
   { name: "Heart Fingers", id: "emote-heartfingers", duration: 4.001974, is_free: true },
   { name: "Heart Shape", id: "emote-heartshape", duration: 6.232394, is_free: false },
-  { name: "Hug", id: "emote-hug", duration: 2.5, is_free: false },
+  { name: "Hug", id: "emote-hug", duration: 3, is_free: false },
   { name: "Eyeroll", id: "emoji-eyeroll", duration: 3.020264, is_free: false },
   { name: "Embarrassed", id: "emote-embarrassed", duration: 7.414283, is_free: false },
   { name: "Float", id: "emote-float", duration: 8.995302, is_free: true },
@@ -211,7 +211,7 @@ const emotes = [
   { name: "Air Guitar", id: "idle-guitar", duration: 13.229398, is_free: true },
   { name: "This Is For You", id: "emote-gift", duration: 5.8, is_free: true },
   { name: "Push it", id: "dance-employee", duration: 8, is_free: true },
-  { name: "Sweet Smooch", id: "emote-kissing", duration: 5, is_free: false },
+  { name: "Sweet Smooch", id: "emote-kissing", duration: 6, is_free: false },
   { name: "Wop Dance", id: "dance-tiktok11", duration: 11, is_free: true },
   { name: "Cute Salute", id: "emote-cutesalute", duration: 3, is_free: true },
   { name: "At Attention", id: "emote-salute", duration: 3, is_free: true },
@@ -245,7 +245,7 @@ const emoteWords = [
     ],
     id: "emote-kissing",
     index: findEmoteIndexById("emote-kissing"),
-    duration: 5
+    duration: 6
   },
   {
     names: [
@@ -285,7 +285,7 @@ const emoteWords = [
     ],
     id: "emote-hug",
     index: findEmoteIndexById("emote-hug"),
-    duration: 2.5
+    duration: 3
   },
 ]
 
