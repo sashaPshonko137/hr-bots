@@ -8,7 +8,7 @@ const token = "8115e4bb579acdca207321848a4c3f3eaca0133d3bd6c5acc14b62695e07261e"
 const room = "68529363d23340447bc0b10c";
 const ownerID = "https://high.rs/room?id=68529363d23340447bc0b10c&invite_id=6878f0cda2765ebef404143f"
 
-const userCord = new Map
+let userCord = new Map
 const userEmote = new Map
 
 const emotes = [
@@ -322,6 +322,12 @@ bot.on('playerJoin', async (user, position) => {
 bot.on("playerTip", async (sender, receiver, tip) => {
   const balance = await bot.wallet.gold.get().catch(console.error)
 })
+
+bot.on('ready', async () => {
+  const players = await bot.room.players.get()
+  userCord = new Map(players.map(entry => [entry[0].id, entry[1]]));
+  console.log(players)
+});
 
 bot.on("chatCreate", async (user, message) => {
   const msg = message.toLowerCase();
