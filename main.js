@@ -321,6 +321,7 @@ bot.on("playerTip", async (sender, receiver, tip) => {
 })
 
 bot.on('ready', async () => {
+  await bot.outfit.change("default").catch(e => console.error(e));
   bot.move.walk(18.5, 2, 1.5, Facing.FrontLeft)
   const players = await bot.room.players.get()
   userCord = new Map(players.map(entry => [entry[0].id, entry[1]]));
