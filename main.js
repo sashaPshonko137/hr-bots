@@ -295,8 +295,12 @@ const bot = new Highrise({
   Cache: true
 });
 
+function getRandomNumber(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 setInterval(() => {
-  bot.message.send("ЛЮДИ НЕ ПОПРОШАЙНИЧАТЬ БУДЬТЕ ТЕРПИЛИВЫМИ ЕСЛИ ВЫ НЕ ТЕРПЕЛИВЫ ТО БУДЕТЕ КИКНУТЫ С РУМЫ ЗАДАВАТЬ ГЛУПЫЕ ВОПРОСЫ ПО ТИПУ А ТУТ ЧЕ РАЗДАЧА - КИК ЧИТАЙТЕ НАЗВАНИЕ РУМЫ ЛС СОЗДАТЕЛЬНИЦЫ МУСОРОМ НЕ ЗАСОРЯТЬ РЕКЛАМА СВОИХ РУМ ЗАПРЕЩЕНА").catch(console.error);
+  bot.message.send(`${getRandomNumber(0, 20)}\nЛЮДИ НЕ ПОПРОШАЙНИЧАТЬ БУДЬТЕ ТЕРПИЛИВЫМИ ЕСЛИ ВЫ НЕ ТЕРПЕЛИВЫ ТО БУДЕТЕ КИКНУТЫ С РУМЫ ЗАДАВАТЬ ГЛУПЫЕ ВОПРОСЫ ПО ТИПУ А ТУТ ЧЕ РАЗДАЧА - КИК ЧИТАЙТЕ НАЗВАНИЕ РУМЫ ЛС СОЗДАТЕЛЬНИЦЫ МУСОРОМ НЕ ЗАСОРЯТЬ РЕКЛАМА СВОИХ РУМ ЗАПРЕЩЕНА`).catch(console.error);
 }, 120000)
 setInterval(async () => {
   for (const [userID, emoteData] of userEmote) {
